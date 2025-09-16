@@ -9,7 +9,7 @@ def start_timer(time_limit):
         print("\n⏰ Time's up! You lose.")
         sys.exit() #force quit the game
     t = threading.Thread(target=timer_end, daemon=True)
-    t.start
+    t.start()
 
 
 while True: #Main loop which checks if the player wants to play

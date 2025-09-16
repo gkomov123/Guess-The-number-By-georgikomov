@@ -26,7 +26,6 @@ while True: #Main loop which checks if the player wants to play
         max_guesses = float("inf")
         time_limit = 30 #SECONDS
         start_time = time.time()
-        
     else:
         range_max = 200
         max_guesses = 10
@@ -34,37 +33,40 @@ while True: #Main loop which checks if the player wants to play
     # Chooses a random number from 1 to 100
     number_to_guess = random.randint(1, range_max)    
     
+    # guesses counter
     guesses = 0
 
 
     # Loop for the game logic
     while guesses < max_guesses:
 
-        if difficulty == "t" and (time.time() - start_time) > time_limit:
+        # Checks if the time limit has been reached
+        if difficulty == "t" and (time.time() - start_time) > time_limit: 
             print("⏰ Time's up! You lose.")
             break
 
+        # Guess Input and guess incrementer    
         number = int(input("Guess a number: "))
         guesses += 1
 
         if number > number_to_guess:
-            print("Too high")
-        elif number < number_to_guess:
+            print("Too high") # if the number guessed is higher than the number to guess
+        elif number < number_to_guess: # if the number guessed is lower than the number to guess
             print("Too low")
-        else:
+        else: # Win prints
             print("-------------")
             print("You Win!")
             print(f"Guesses: {guesses}")
             print(f"The number was: {number_to_guess}")
             print(f"It took you, {int(time.time() - start_time)}s, to guess the number")
             break
-    else:   
+    else: # Ran out of guesses case
         print("-----------------")
         print("Out of guesses")
         print(f"The number was: {number_to_guess}")
         print("-----------------")
         
-    
+    # Play again logic
     play_again = input("Do you want to keep playin? (y), (n): ")
     if play_again != "y":
         print("Thanks for playing!")
